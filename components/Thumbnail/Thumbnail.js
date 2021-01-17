@@ -1,14 +1,27 @@
 const Thumbnail = (props) => {
     return (
-        <div>
+        <>
             {
                 props.imageURL !== null &&
-                <>
-                    <img src={props.imageURL.medium} alt={props.caption} />
-                    <h3>{props.caption}</h3>
-                </>
+                <div>
+                    <img src={props.imageURL.medium} alt={props.caption} className="ThumbnailImg" />
+                    <h4 className="Caption">{props.caption}</h4>
+
+                    {/* Using style jsx */}
+                    <style jsx>{`
+                        .ThumbnailImg {
+                            width: 100%;
+                        }
+
+                        .Caption {
+                            text-align: center;
+                        }
+                    `
+                    }
+                    </style>
+                </div>
             }
-        </div>
+        </>
     )
 }
 
