@@ -14,10 +14,14 @@ export const getServerSideProps = async(context) => {
 }
 
 const Country = (props) => {
-    console.log(props.shows);
-
     return (
-        <h1>Country Test</h1>
+        <ul>
+        {
+            props.shows.map((showItem, index) => {
+                return <li key={index}>{showItem.show.name}</li>
+            })
+        }
+        </ul>
     )
 }
 
