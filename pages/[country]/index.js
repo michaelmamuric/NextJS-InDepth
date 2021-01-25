@@ -39,7 +39,9 @@ const Country = (props) => {
             props.shows.map((showItem, index) => {
                 return (
                     <li key={index}>
-                        <Thumbnail imageURL={showItem.show.image} caption={showItem.name} />
+                        <Thumbnail 
+                            imageURL={showItem.show.image !== null ? showItem.show.image : undefined}
+                            caption={showItem.name} />
                     </li>
                 )
             })
