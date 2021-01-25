@@ -1,4 +1,6 @@
 import axios from 'axios';
+import classes from './index.module.css';
+import Link from 'next/link';
 import Thumbnail from '../../components/Thumbnail/Thumbnail';
 
 // Server Side Rendering
@@ -21,7 +23,8 @@ export const getServerSideProps = async(context) => {
         // Response obtained from API call will be sent to Country as props
         return {
             props: {
-                shows: response.data
+                shows: response.data,
+                country: countryCode
             }
         }
     } catch(error) {
@@ -33,15 +36,22 @@ export const getServerSideProps = async(context) => {
 }
 
 const Country = (props) => {
+    // Destructure for easier referencing
+    const { country, shows } = props;
+
     return (
-        <ul>
+        <ul className={classes.Grid}>
         {
-            props.shows.map((showItem, index) => {
+            shows.map((showItem, index) => {
                 return (
                     <li key={index}>
+                        {/* Match URL to /[country]/[showId].js */ }
                         <Thumbnail 
                             imageURL={showItem.show.image !== null ? showItem.show.image : undefined}
-                            caption={showItem.name} />
+                            caption={showItem.name}
+                            href="/[country]/[showId]"
+                            as={`/${country}/${showItem.show.id}`}
+                        />
                     </li>
                 )
             })
