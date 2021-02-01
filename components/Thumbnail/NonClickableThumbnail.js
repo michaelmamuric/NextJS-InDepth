@@ -6,11 +6,11 @@ const NonClickableThumbnail = (props) => {
     const { imageURL, caption } = props;
 
     return (
-        <div className={classes.Center}>
+        <div style={{padding: '15px'}}>
             <img
                 src={imageURL !== undefined ? imageURL.medium : 'https://via.placeholder.com/210x295?text=?'}
                 alt={caption} />
-            <div className={classes.Caption}>{caption}</div>
+            <div>{caption}</div>
         </div>
     )
 }

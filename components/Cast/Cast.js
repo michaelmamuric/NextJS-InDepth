@@ -8,7 +8,6 @@ const Cast = (props) => {
             <ul className={classes.CastList}>
             {
                 props.cast.map((cast, index) => {
-
                     // Destructuring
                     const { image, name } = cast.person;
 
