@@ -8,11 +8,11 @@ const Thumbnail = (props) => {
 
     return (
         <div className={classes.Center}>
-            {/* Match URL to /[country]/[showId].js */ }
+            {/* Match URL to /[country]/[showId].js */}
             <Link href={href} as={as}>
                 <a>
-                    <img 
-                        src={imageURL !== undefined ? imageURL.medium : 'https://via.placeholder.com/210x295?text=?'} 
+                    <img
+                        src={imageURL !== undefined ? imageURL.medium : 'https://via.placeholder.com/210x295?text=?'}
                         alt={caption} />
                     <div className={classes.Caption}>{caption}</div>
                 </a>
