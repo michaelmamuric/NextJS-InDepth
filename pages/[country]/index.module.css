@@ -4,3 +4,8 @@
     gap: 20px;
     list-style-type: none
 }
+
+.Poster {
+    height: 200px;
+    background-size: cover;
+}
