@@ -5,7 +5,9 @@ import Cast from '../../components/Cast/Cast';
 
 export const getServerSideProps = async(context) => {
     try {
-        const response = await axios.get('http://api.tvmaze.com/shows/1?embed=cast');
+        // Get show ID from context
+        const showId = context.query.showId;
+        const response = await axios.get(`http://api.tvmaze.com/shows/${showId}?embed=cast`);
         return {
             props: {
                 show: response.data

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import classes from './index.module.css';
-import Link from 'next/link';
 import Thumbnail from '../../components/Thumbnail/Thumbnail';
 
 // Server Side Rendering
@@ -44,7 +43,7 @@ const Country = (props) => {
         {
             shows.map((showItem, index) => {
                 return (
-                    <li key={index}>
+                    <li className={classes.ListItem} key={index}>
                         {/* Match URL to /[country]/[showId].js */ }
                         <Thumbnail 
                             imageURL={showItem.show.image !== null ? showItem.show.image : undefined}

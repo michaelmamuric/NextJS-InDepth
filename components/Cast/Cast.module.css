@@ -5,3 +5,7 @@
     display: flex;
     overflow-x: scroll
 }
+
+.CastList li {
+    margin-right: 10px;
+}
