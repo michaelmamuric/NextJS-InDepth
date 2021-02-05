@@ -36,7 +36,10 @@ const ShowDetails = (props) => {
                 /* Summary is enclosed in a paragraph (p) tag */
                 parse(summary)
             }
-            <Cast cast={_embedded.cast} />
+            {
+                /* Check if cast list is available from API response */
+                _embedded.cast.length > 0 && <Cast cast={_embedded.cast} />
+            }
         </div>
     )
 }

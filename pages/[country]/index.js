@@ -1,6 +1,7 @@
 import axios from 'axios';
 import classes from './index.module.css';
 import Thumbnail from '../../components/Thumbnail/Thumbnail';
+import Header from '../../components/Header/Header';
 
 // Server Side Rendering
 // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
@@ -39,6 +40,8 @@ const Country = (props) => {
     const { country, shows } = props;
 
     return (
+        <>
+        <Header />
         <ul className={classes.Grid}>
         {
             shows.map((showItem, index) => {
@@ -56,6 +59,7 @@ const Country = (props) => {
             })
         }
         </ul>
+        </>
     )
 }
 
