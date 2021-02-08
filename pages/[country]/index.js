@@ -11,7 +11,7 @@ export const getServerSideProps = async(context) => {
     const countryCode = context.params.country || 'ca';
 
     try {
-        const response = await axios.get(`http://api.tvmaze.com/schedule?country=${countryCode}`);
+        const response = await axios.get(`https://api.tvmaze.com/schedule?country=${countryCode}`);
         
         // Return notFound if no data available
         if(response.data.length === 0) {
