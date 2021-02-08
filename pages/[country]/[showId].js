@@ -2,6 +2,7 @@ import classes from './index.module.css';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Cast from '../../components/Cast/Cast';
+import Error from 'next/error';
 
 export const getServerSideProps = async(context) => {
     try {
@@ -16,13 +17,20 @@ export const getServerSideProps = async(context) => {
     } catch(error) {
         return {
             props: {
-                error: error.error
+                statusCode : error.response ? error.response.status : 500
             }
         }
     }
 }
 
 const ShowDetails = (props) => {
+
+    // statusCode is set when an error is encountered
+    if(props.statusCode !== null) {
+        // Use Error component from next/error
+        return <Error statusCode={props.statusCode} title="Oops! There's a problem..." />
+    }
+
     // Destructuring
     const { name, image, summary, _embedded } = props.show;
 
