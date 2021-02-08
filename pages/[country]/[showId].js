@@ -3,6 +3,7 @@ import axios from 'axios';
 import parse from 'html-react-parser';
 import Cast from '../../components/Cast/Cast';
 import Error from 'next/error';
+import CustomError from '../_error';
 
 export const getServerSideProps = async(context) => {
     try {
@@ -27,8 +28,8 @@ const ShowDetails = (props) => {
 
     // statusCode is set when an error is encountered
     if(props.statusCode !== null) {
-        // Use Error component from next/error
-        return <Error statusCode={props.statusCode} title="Oops! There's a problem..." />
+        // Use CustomError component found in _error.js
+        return <CustomError statusCode={props.statusCode} />;
     }
 
     // Destructuring
