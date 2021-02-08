@@ -27,7 +27,7 @@ export const getServerSideProps = async(context) => {
 const ShowDetails = (props) => {
 
     // statusCode is set when an error is encountered
-    if(props.statusCode !== null) {
+    if(props.statusCode) {
         // Use CustomError component found in _error.js
         return <CustomError statusCode={props.statusCode} />;
     }

@@ -21,7 +21,7 @@ export const getServerSideProps = async(context) => {
                 }
             }
         }
-        
+
         // Response obtained from API call will be sent to Country as props
         return {
             props: {
@@ -40,9 +40,9 @@ export const getServerSideProps = async(context) => {
 }
 
 const Country = (props) => {
-
+    
     // statusCode is set when an error is encountered
-    if(props.statusCode !== null) {
+    if(props.statusCode) {
         // Use CustomError component found in _error.js
         return <CustomError statusCode={props.statusCode} />;
     }
