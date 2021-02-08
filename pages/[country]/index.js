@@ -2,13 +2,16 @@ import axios from 'axios';
 import classes from './index.module.css';
 import Thumbnail from '../../components/Thumbnail/Thumbnail';
 import CustomError from '../_error';
+import nookies from 'nookies';
 
 // Server Side Rendering
 // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
 export const getServerSideProps = async(context) => {
 
+    // Get selectedCountry from cookie
+    const { selectedCountry } = nookies.get(context);
     // Get country code from context variable
-    const countryCode = context.params.country || 'ca';
+    const countryCode = context.query.country || selectedCountry || 'jp';
 
     try {
         const response = await axios.get(`https://api.tvmaze.com/schedule?country=${countryCode}`);

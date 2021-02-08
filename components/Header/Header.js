@@ -1,6 +1,7 @@
 import classes from './Header.module.css';
+import nookies from 'nookies';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // List of Countries
 const countryList = [
@@ -26,6 +27,14 @@ const Header = (props) => {
         // Redirect page
         router.push('/[country]', `/${event.target.value}`);
     }
+
+    // Set cookie every time country value changes
+    useEffect(() => {
+        nookies.set(null, 'selectedCountry', country, {
+            maxAge: 30 * 24 * 60 * 60,
+            path: '/'
+        })
+    }, [country])
 
     return (
         <div className={classes.Header}>

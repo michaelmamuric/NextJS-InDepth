@@ -1,7 +1,10 @@
 import Head from 'next/head';
+import nookies from 'nookies';
 
 export const getServerSideProps = (context) => {
-  const countryCode = context.query.country || 'jp';
+  // Get selectedCountry from cookie
+  const { selectedCountry } = nookies.get(context);
+  const countryCode = context.query.country || selectedCountry || 'jp';
   // Redirect on server side
   context.res.writeHead(302, { Location: `/${countryCode}` });
   context.res.end();
