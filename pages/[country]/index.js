@@ -2,6 +2,7 @@ import axios from 'axios';
 import classes from './index.module.css';
 import Thumbnail from '../../components/Thumbnail/Thumbnail';
 import CustomError from '../_error';
+import Grid from '@material-ui/core/Grid';
 import nookies from 'nookies';
 
 // Server Side Rendering
@@ -54,11 +55,13 @@ const Country = (props) => {
     const { country, shows } = props;
 
     return (
-        <ul className={classes.Grid}>
+        <>
+        <br />
+        <Grid container>
         {
             shows.map((showItem, index) => {
                 return (
-                    <li className={classes.ListItem} key={index}>
+                    <Grid key={index} item xs={12} sm={6}>
                         {/* Match URL to /[country]/[showId].js */ }
                         <Thumbnail 
                             imageURL={showItem.show.image !== null ? showItem.show.image : undefined}
@@ -66,11 +69,12 @@ const Country = (props) => {
                             href="/[country]/[showId]"
                             as={`/${country}/${showItem.show.id}`}
                         />
-                    </li>
+                    </Grid>
                 )
             })
         }
-        </ul>
+        </Grid>
+        </>
     )
 }
 

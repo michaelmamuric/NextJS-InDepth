@@ -2,6 +2,8 @@ import classes from './Header.module.css';
 import nookies from 'nookies';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 // List of Countries
 const countryList = [
@@ -38,14 +40,14 @@ const Header = (props) => {
 
     return (
         <div className={classes.Header}>
-            <select value={country} onChange={selectChangeHandler}>
+            <Select id="country" value={country} onChange={selectChangeHandler} label="Country" className={classes.Select}>            
             {
                 // Map thru countryList
                 countryList.map((country) => {
-                    return <option key={country.label} value={country.label}>{country.name}</option>
+                    return <MenuItem key={country.label} value={country.label}>{country.name}</MenuItem>
                 })
             }
-            </select>
+            </Select>
         </div>
     )
 }
